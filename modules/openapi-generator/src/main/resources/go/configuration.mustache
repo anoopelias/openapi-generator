@@ -71,6 +71,10 @@ type ServerConfiguration struct {
 	Variables map[string]ServerVariable
 }
 
+type HTTPClient interface {
+	Do(req *http.Request) (*http.Response, error)
+}
+
 // Configuration stores the configuration of the API client
 type Configuration struct {
 	BasePath      string            `json:"basePath,omitempty"`
@@ -80,7 +84,7 @@ type Configuration struct {
 	UserAgent     string            `json:"userAgent,omitempty"`
 	Debug         bool              `json:"debug,omitempty"`
 	Servers       []ServerConfiguration
-	HTTPClient    *http.Client
+	HTTPClient    HTTPClient
 }
 
 // NewConfiguration returns a new Configuration object
