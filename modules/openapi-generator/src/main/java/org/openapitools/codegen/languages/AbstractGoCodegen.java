@@ -615,7 +615,7 @@ public abstract class AbstractGoCodegen extends DefaultCodegen implements Codege
             Object v = m.get("model");
             if (v instanceof CodegenModel) {
                 CodegenModel model = (CodegenModel) v;
-                for (CodegenProperty param : model.vars) {
+                for (CodegenProperty param : model.allVars) {
                     if (!addedTimeImport
                             && ("time.Time".equals(param.dataType) || ("[]time.Time".equals(param.dataType)))) {
                         imports.add(createMapping("import", "time"));
